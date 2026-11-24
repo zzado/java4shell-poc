@@ -1,0 +1,20 @@
+services:
+  jdk17_0_6:
+    image: java4shell-poc:17.0.6_10
+    build:
+      context: .
+      args:
+        JDK_URL: "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.6%2B10/OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.tar.gz"
+        JDK_SHA256: "a0b1b9dd809d51a438f5fa08918f9aca7b2135721097f0858cf29f77a35d4289"
+
+  jdk17_0_6_no_intrinsics:
+    image: java4shell-poc:17.0.6_10
+    command: ["-XX:UseAVX=3", "-XX:-UseBASE64Intrinsics", "-cp", "/opt/probe", "Base64TailProbe"]
+
+  jdk17_0_5:
+    image: java4shell-poc:17.0.5_8
+    build:
+      context: .
+      args:
+        JDK_URL: "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.5%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.5_8.tar.gz"
+        JDK_SHA256: "482180725ceca472e12a8e6d1a4af23d608d78287a77d963335e2a0156a020af"
